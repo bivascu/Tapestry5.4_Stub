@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mainBuildFileCharming" default="deploy" basedir="."  xmlns:ivy="antlib:org.apache.ivy.ant">
+    <description>
+            description
+    </description>
+	
+	<dirname property="build.basedir" file="${ant.file.mainBuildFileCharming}"/>	<!-- this gives me the variable against which I will resolse paths. Var points to this file no matter called from where -->
+	<property name="ivy.dep.file" value="${build.basedir}/ivy.xml"></property>
+	<loadproperties srcfile="${build.basedir}/common.properties"></loadproperties>  <!--we jump one level up because the caller xml dictates the path  -->
+	
+	
+
+    <target name="deploy"  description="this target will deploy to locations in the property file">
+        <echo>This is working!</echo>
+    	<echo>Property is: ${location}</echo>
+    	<echo>Property is: ${lib_dir}</echo>
+    	<echo>ant.file=${ant.file.mainBuildFile}</echo>   
+    </target>
+	
+	<target name="package">
+		<jar destfile="charming.jar" basedir="../../build/classes" whenmanifestonly="fail" manifest="../../WebContent/META-INF/MANIFEST.MF"></jar>		
+	</target>
+	
+    <target name="retrieveLibs">    	    	
+    	<ivy:retrieve conf="binaries" pattern="${build.basedir}/../WebContent/WEB-INF/lib/[artifact]-[revision].[ext]" />    	
+    </target>	
+	
+</project>

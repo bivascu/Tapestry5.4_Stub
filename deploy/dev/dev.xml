@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="charming_dev_deploy" basedir=".">
+    <description>
+            Deploy charming project to local development. This will be a Tomcat outside eclipse. 
+    </description>	
+	
+	<import file="../build.xml"/>
+	<loadproperties srcfile="dev.properties"></loadproperties>		
+</project>
